@@ -1,6 +1,9 @@
 import math
 import getpass
 import re
+import random
+from common_words import COMMON_WORDS
+from fun_facts_list import  FUN_FACTS
 
 
 def has_lower(s):
@@ -68,6 +71,12 @@ def time_to_crack(bits, guesses_per_sec=1e9):
     expected_guesses = 2**(bits - 1)
     return expected_guesses / max(guesses_per_sec, 1.0)
 
+def time_to_crack_seconds(bits, guesses_per_sec):
+    return time_to_crack(bits, guesses_per_sec)
+
+def human_time(seconds):
+    return crack_time(seconds)
+
 # anything above 120 is already very good so cap it at 120
 def strength_score(bits):
     if bits <= 0:
@@ -88,6 +97,9 @@ def strength_label(score):
         return "Strong"
     return "Very Strong"
 
+# --------------------
+# simple pattern check
+# --------------------
 
 def only_letters(pw: str) -> bool:
     return pw.isalpha()
@@ -125,6 +137,13 @@ def has_numeric_sequence(pw: str) -> bool:
 def has_year_like(pw: str) -> bool:
     # 1900–2099 anywhere
     return re.search(r"(19|20)\d{2}", pw) is not None
+
+def contains_common_word(pw):
+    low = pw.lower()
+    for word in COMMON_WORDS:
+        if word in low:
+            return True
+    return False
 
 
 # nist style functions to check for password security
@@ -209,4 +228,61 @@ def password_tips(pw: str, username: str = "", first_name: str = "", last_name: 
     return unique
 
 
+# -----------------------------
+# Main analysis function
+# -----------------------------
+
+def analyze_password(pw, username="", first_name="", last_name=""):
+    """
+    Returns a plain dict so it's easy to show in Streamlit.
+    """
+    bits = entropy_bits(pw)
+    score = strength_score(bits)
+    label = strength_label(score)
+
+    # a few simple attacker profiles
+    profiles = {
+        "online (10/sec)": 10.0,
+        "online (1k/sec)": 1000.0,
+        "offline (1e9/sec)": 1_000_000_000.0
+    }
+    crack_times = {}
+    for name, rate in profiles.items():
+        secs = time_to_crack_seconds(bits, rate)
+        crack_times[name] = human_time(secs)
+
+    flags = {
+        "has_lower": has_lower(pw),
+        "has_upper": has_upper(pw),
+        "has_digit": has_digit(pw),
+        "has_symbol": has_symbol(pw),
+        "only_letters": only_letters(pw),
+        "only_digits": only_digits(pw),
+        "only_symbols": only_symbols(pw),
+        "repeat_3": has_repeat_3(pw),
+        "alpha_sequence": has_alpha_sequence(pw),
+        "numeric_sequence": has_numeric_sequence(pw),
+        "year_like": has_year_like(pw),
+        "common_word": contains_common_word(pw),
+    }
+
+    return {
+        "length": len(pw),
+        "charset": charset_size(pw),
+        "entropy_bits": bits,
+        "score": score,
+        "label": label,
+        "crack_times": crack_times,
+        "flags": flags,
+        "tips": password_tips(pw, username, first_name, last_name),
+    }
+
+def get_fun_facts(n=6, seed=None):
+    """
+    Return up to n random (title, text) facts from FUN_FACTS.
+    """
+    if seed is not None:
+        random.seed(seed)
+    n = max(1, min(n, len(FUN_FACTS)))
+    return random.sample(FUN_FACTS, n)
 
