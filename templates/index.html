@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Password Strength Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <header class="hero">
+    <h1>🔐 Password Strength Checker</h1>
+    <p class="subtitle">Type a password, check its strength, and get simple tips to improve it.</p>
+  </header>
+
+  <main class="content">
+    <!-- Analyzer -->
+    <section class="checker">
+      <h2>Check your password</h2>
+      <form id="passwordForm" class="form-row">
+        <div class="password-wrapper">
+          <input id="password" type="password" placeholder="Enter a password…" autocomplete="off" />
+          <button type="button" id="togglePassword" aria-label="Show/Hide Password">👁</button>
+        </div>
+        <button type="submit">Check</button>
+      </form>
+
+      <div id="result" class="result hidden">
+        <div class="row">
+          <div class="card">
+            <div class="title">Score</div>
+            <div id="score" class="value">—</div>
+            <div id="label" class="sub">—</div>
+          </div>
+          <div class="card">
+            <div class="title">Entropy (bits)</div>
+            <div id="bits" class="value">—</div>
+            <div class="sub">length × log₂(charset)</div>
+          </div>
+        </div>
+
+        <div class="bar"><div id="bar-fill" class="bar-fill" style="width:0%"></div></div>
+
+        <h3>Estimated crack times</h3>
+        <table class="table">
+          <thead>
+            <tr><th>Attacker profile</th><th>Estimate</th></tr>
+          </thead>
+          <tbody id="crack-body"></tbody>
+        </table>
+
+        <h3>Tips to improve</h3>
+        <ul id="tips-list" class="list"></ul>
+      </div>
+    </section>
+
+    <!-- Fun facts -->
+    <section class="facts-section">
+      <h2>Fun Facts</h2>
+      <div id="fact-card" class="fact-card" aria-live="polite">
+        <div id="fact-title" class="fact-title"></div>
+        <div id="fact-text" class="fact-text"></div>
+      </div>
+      <div id="dots" class="dots"></div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="privacy">
+      <p><strong>Disclaimer:</strong> Passwords you type here are sent only to your local session/backend for analysis and are not stored. This page is for educational use.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Password Strength Checker</small>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
