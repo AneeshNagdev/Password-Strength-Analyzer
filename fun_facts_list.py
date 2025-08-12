@@ -1,5 +1,3 @@
-import random
-
 FUN_FACTS = [
     ("Hashing (what & why)",
      "Websites should never store your raw password. They store a hash — the output of a one-way function. "
@@ -48,5 +46,3 @@ FUN_FACTS = [
      "Answers like pet names or birth city are often public. If a site requires them, "
      "use random answers and store them in your manager."),
 ]
-
-
