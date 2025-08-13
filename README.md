@@ -74,3 +74,14 @@ password-analyzer/
 git clone https://github.com/yourusername/password-analyzer.git
 cd password-analyzer
 ```
+
+### 2️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+3️⃣ Run the Application or visit [checkmypass.vercel.app](url)
+```bash
+python app.py
+```
+
