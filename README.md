@@ -44,7 +44,7 @@ Built using **Python (Flask)** for the backend and **HTML, CSS, and JavaScript**
 ---
 
 ## 📂 Project Structure
-
+```plaintext
 password-analyzer/
 │
 ├── screenshots/ # Project screenshots
@@ -61,7 +61,7 @@ password-analyzer/
 ├── password_analyzer.py # Password analysis logic
 ├── requirements.txt # Python dependencies
 ├── vercel.json # Vercel deployment configuration
-
+```
 ---
 
 ## ⚡ Getting Started
