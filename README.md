@@ -3,8 +3,6 @@
 A simple yet educational web application that allows users to **check the strength of their passwords** and learn **cybersecurity fun facts** in the process.  
 Built using **Python (Flask)** for the backend and **HTML, CSS, and JavaScript** for the frontend.
 
----
-
 ## 📸 Screenshots
 
 ### Landing Page
@@ -13,7 +11,6 @@ Built using **Python (Flask)** for the backend and **HTML, CSS, and JavaScript**
 ### Password Analysis
 ![Password Analysis](screenshots/analysis.png)
 
----
 
 ## ✨ Features
 
@@ -24,10 +21,6 @@ Built using **Python (Flask)** for the backend and **HTML, CSS, and JavaScript**
 - **Eye Button**: Toggle password visibility when typing.
 - **Privacy Notice**: Passwords are never stored — analysis happens in your session only.
 
----
-
-
----
 
 ## 🛠️ Tech Stack
 
@@ -41,7 +34,6 @@ Built using **Python (Flask)** for the backend and **HTML, CSS, and JavaScript**
 - Vercel for deployment
 - `requirements.txt` for dependency management
 
----
 
 ## 📂 Project Structure
 ```plaintext
@@ -65,7 +57,6 @@ password-analyzer/
 ├── requirements.txt # Python dependencies
 ├── vercel.json # Vercel deployment configuration
 ```
----
 
 ## ⚡ Getting Started
 
@@ -84,6 +75,19 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
+
+## 🔒 Security Standards
+
+This project takes inspiration from the **NIST Digital Identity Guidelines** (NIST Special Publication 800-63B), which provide modern recommendations for secure password practices.
+
+According to NIST:
+- Passwords should be **at least 8 characters long**.
+- Complex character requirements (e.g., mandatory symbols) are less important than overall **length and unpredictability**.
+- Common, easily guessable passwords should be **blocked**.
+- Passwords should be checked against **known breach lists**.
+- Encourages **user-friendly tips** to create memorable but strong passwords.
+
+> **Note:** While this tool uses NIST-inspired principles, it is for **educational and awareness purposes only** and should not be used as the sole method of security validation.
 
 ## ⚠️ Disclaimer
 
