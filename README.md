@@ -50,14 +50,11 @@ password-analyzer/
 ├── screenshots/ # Project screenshots
 | ├── landing.png
 | └── analysis.png
-|
 ├── static/
 │ ├── style.css # Frontend styles
 │ └── script.js # Frontend JavaScript
-│
 ├── templates/
 │ └── index.html # Landing page
-│
 ├── app.py # Flask backend
 ├── common_words_list.py # Common words for password check
 ├── fun_facts_list.py # List of fun facts
