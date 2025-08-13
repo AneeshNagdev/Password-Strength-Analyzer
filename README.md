@@ -80,7 +80,7 @@ cd password-analyzer
 pip install -r requirements.txt
 ```
 
-3️⃣ Run the Application or visit (https://checkmypass.vercel.app)
+3️⃣ Run the Application or visit [https://checkmypass.vercel.app](url)
 ```bash
 python app.py
 ```
