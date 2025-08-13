@@ -85,3 +85,15 @@ pip install -r requirements.txt
 python app.py
 ```
 
+## ⚠️ Disclaimer
+
+This application is intended **solely for educational and demonstration purposes**.
+
+- **No Password Storage**: All password checks are processed locally on the server during your active session. No passwords are stored, saved, or logged.
+- **Privacy First**: We do not track, share, or transmit any data you enter. The analysis happens in-memory and is discarded immediately after processing.
+- **Do Not Use Real Credentials**: For your own safety, please do not test this tool using passwords you actively use for banking, email, or other personal accounts.
+- **No Security Guarantee**: While the password strength estimates are based on common security heuristics, they are not a substitute for professional security auditing.
+
+By using this application, you acknowledge and agree that:
+> The authors and contributors are **not responsible** for any damages, losses, or consequences resulting from the use or misuse of this tool.
+
